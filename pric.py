@@ -14,7 +14,7 @@ class Test:
 
     @allure.story('用例B')
     def test_py_b(self):
-        assert 1 == 2
+        assert 1 == 1
 
     @allure.story('用例C')
     def test_py_c(self):
