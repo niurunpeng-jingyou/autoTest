@@ -27,7 +27,7 @@ def DingTalkSend():
     # 获取项目绝对路径
     path = os.path.abspath(os.path.dirname((__file__)))
     # 打开prometheusData 获取需要发送的信息
-    f = open(path + r'\report\export\prometheusData.txt', 'r')
+    f = open(path + '/report/export/prometheusData.txt')
     for lines in f:
         for c in lines:
             launch_name = lines.strip('\n').split(' ')[0]
