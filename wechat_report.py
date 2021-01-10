@@ -3,7 +3,8 @@ import jenkins
 import json
 import urllib3
 
-name = "FACADE_WAIBU_54"
+name = "FACADE"
+name_branch = "FACADE_WAIBU_54"
 # jenkins登录地址
 jenkins_url = "http://192.168.1.106:8888/"
 # 获取jenkins对象
@@ -63,7 +64,7 @@ def DingTalkSend():
     url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=30563df1-59d1-4c07-8c61-cdcbffe2030e'  # webhook
     con = {"msgtype": "markdown",
            "markdown": {
-               "content": "<@niurunpeng>\n**" + name + "\n**<font color =\"" + result_color + "\">  **" + result +
+               "content": "<@niurunpeng>\n**" + name_branch + "\n**<font color =\"" + result_color + "\">  **" + result +
                           "**</font>\n >用例总数: <font color =\"info\">" + retries_run +
                           "  </font> 成功比例: <font color =\"info\">" + percent_passed +
                           "</font> \n>通过数量: <font color =\"info\">" + status_passed +
@@ -72,7 +73,7 @@ def DingTalkSend():
                           "  </font> 未知错误: <font color =\"warning\">" + status_unknown +
                           "</font> \n>中断数量: <font color =\"warning\">" + status_broken +
                           "  </font> 重试次数: <font color =\"warning\">" + status_retries +
-                          "</font> \n[控制台输出](" + job_url + ")   [查看测试报告](" + report_url + ")",
+                          "</font> \n[控制台输出](" + job_url + ")    [查看测试报告](" + report_url + ")",
            }
            }
     urllib3.disable_warnings()
