@@ -3,7 +3,7 @@ import jenkins
 import json
 import urllib3
 
-name = "facade_wb_54"
+name = "FACADE_WAIBU_54"
 # jenkins登录地址
 jenkins_url = "http://192.168.1.105:8888/"
 # 获取jenkins对象
