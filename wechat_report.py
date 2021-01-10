@@ -5,7 +5,7 @@ import urllib3
 
 name = "FACADE_WAIBU_54"
 # jenkins登录地址
-jenkins_url = "http://192.168.1.105:8888/"
+jenkins_url = "http://192.168.1.106:8888/"
 # 获取jenkins对象
 server = jenkins.Jenkins(jenkins_url, username='niurunpeng', password='121476')
 # job名称
@@ -39,6 +39,7 @@ def DingTalkSend():
     f.close()
     retries_run = d.get('launch_retries_run')  # 运行总数
     status_passed = d.get('launch_status_passed')  # 通过数量
+    percent_passed = str(int(int(status_passed) / int(retries_run) * 100)) + "%"
     status_broken = d.get('launch_status_broken')  # 中断数量
     status_skipped = d.get('launch_status_skipped')  # 跳过数量
     status_unknown = d.get('launch_status_unknown')  # 未知错误数量
@@ -62,15 +63,16 @@ def DingTalkSend():
     url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=30563df1-59d1-4c07-8c61-cdcbffe2030e'  # webhook
     con = {"msgtype": "markdown",
            "markdown": {
-               "content": "<@niurunpeng>\n<font color =\"" + result_color + "\"> **" + name + " " + result +
+               "content": "<@niurunpeng>\n**" + name + "\n**<font color =\"" + result_color + "\">  **" + result +
                           "**</font>\n >运行总数: <font color =\"info\">" + retries_run +
+                          "  </font> 成功比例: <font color =\"info\">" + percent_passed +
                           "</font> \n>通过数量: <font color =\"info\">" + status_passed +
-                          "</font> \n>失败数量: <font color =\"warning\">" + status_failed +
+                          "  </font> 失败数量: <font color =\"warning\">" + status_failed +
                           "</font> \n>跳过数量: <font color =\"warning\">" + status_skipped +
-                          "</font> \n>未知错误: <font color =\"warning\">" + status_unknown +
+                          "  </font> 未知错误: <font color =\"warning\">" + status_unknown +
                           "</font> \n>中断数量: <font color =\"warning\">" + status_broken +
-                          "</font> \n>重试次数: <font color =\"warning\">" + status_retries +
-                          "</font> \n[控制台输出](" + job_url + ")\n[测试报告](" + report_url + ")",
+                          "  </font> 重试次数: <font color =\"warning\">" + status_retries +
+                          "</font> \n[控制台输出](" + job_url + ")   [查看测试报告](" + report_url + ")",
            }
            }
     urllib3.disable_warnings()
@@ -82,14 +84,3 @@ def DingTalkSend():
 
 if __name__ == '__main__':
     DingTalkSend()
-# "text": {
-#     "content": name + " 自动化测试用例执行完成"
-#                       "\n测试结果:" + result +
-#                "\n运行总数:" + retries_run +
-#                "\n通过数量:" + status_passed +
-#                "\n失败数量:" + status_failed +
-#                "\n控制台输出：\n" + job_url +
-#                "\n测试报告：\n" + report_url,
-#     "mentioned_list": ["niurunpeng"],
-#     # "mentioned_mobile_list": ["17831017792"]
-# }
