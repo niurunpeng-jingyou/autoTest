@@ -64,7 +64,7 @@ def DingTalkSend():
     con = {"msgtype": "markdown",
            "markdown": {
                "content": "<@niurunpeng>\n**" + name + "\n**<font color =\"" + result_color + "\">  **" + result +
-                          "**</font>\n >运行总数: <font color =\"info\">" + retries_run +
+                          "**</font>\n >用例总数: <font color =\"info\">" + retries_run +
                           "  </font> 成功比例: <font color =\"info\">" + percent_passed +
                           "</font> \n>通过数量: <font color =\"info\">" + status_passed +
                           "  </font> 失败数量: <font color =\"warning\">" + status_failed +
