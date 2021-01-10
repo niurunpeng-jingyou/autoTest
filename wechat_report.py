@@ -38,20 +38,24 @@ def DingTalkSend():
     print(d)
     f.close()
     retries_run = d.get('launch_retries_run')  # 运行总数
-    print('运行总数:{}'.format(retries_run))
     status_passed = d.get('launch_status_passed')  # 通过数量
     status_broken = d.get('launch_status_broken')  # 中断数量
     status_skipped = d.get('launch_status_skipped')  # 跳过数量
     status_unknown = d.get('launch_status_unknown')  # 未知错误数量
-    status_retries = d.get('launch_status_retries')  # 重试次数
-    print('通过数量：{}'.format(status_passed))
+    status_retries = d.get('launch_retries_retries')  # 重试次数
     status_failed = d.get('launch_status_failed')  # 不通过数量
+    print('运行总数:{}'.format(retries_run))
+    print('通过数量：{}'.format(status_passed))
     print('失败数量：{}'.format(status_failed))
+    print('中断数量:{}'.format(status_broken))
+    print('跳过数量:{}'.format(status_skipped))
+    print('未知错误数量:{}'.format(status_unknown))
+    print('重试次数:{}'.format(status_retries))
     if (int(status_failed) > 0):
-        result = '测试不通过'
+        result = "测试不通过"
         result_color = "warning"
     else:
-        result = '测试通过'
+        result = "测试通过"
         result_color = "info"
     # 企业微信推送
 
@@ -63,7 +67,7 @@ def DingTalkSend():
                           "</font> \n>通过数量: <font color =\"info\">" + status_passed +
                           "</font> \n>失败数量: <font color =\"warning\">" + status_failed +
                           "</font> \n>跳过数量: <font color =\"warning\">" + status_skipped +
-                          "</font> \n>未知错误数量: <font color =\"warning\">" + status_unknown +
+                          "</font> \n>未知错误: <font color =\"warning\">" + status_unknown +
                           "</font> \n>中断数量: <font color =\"warning\">" + status_broken +
                           "</font> \n>重试次数: <font color =\"warning\">" + status_retries +
                           "</font> \n[控制台输出](" + job_url + ")\n[测试报告](" + report_url + ")",
