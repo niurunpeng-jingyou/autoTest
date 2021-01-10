@@ -62,6 +62,10 @@ def DingTalkSend():
                           "**</font>\n >运行总数: <font color =\"info\">" + retries_run +
                           "</font> \n>通过数量: <font color =\"info\">" + status_passed +
                           "</font> \n>失败数量: <font color =\"warning\">" + status_failed +
+                          "</font> \n>跳过数量: <font color =\"warning\">" + status_skipped +
+                          "</font> \n>未知错误数量: <font color =\"warning\">" + status_unknown +
+                          "</font> \n>中断数量: <font color =\"warning\">" + status_broken +
+                          "</font> \n>重试次数: <font color =\"warning\">" + status_retries +
                           "</font> \n[控制台输出](" + job_url + ")\n[测试报告](" + report_url + ")",
            }
            }
