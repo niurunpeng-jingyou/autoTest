@@ -40,6 +40,10 @@ def DingTalkSend():
     retries_run = d.get('launch_retries_run')  # 运行总数
     print('运行总数:{}'.format(retries_run))
     status_passed = d.get('launch_status_passed')  # 通过数量
+    status_broken = d.get('launch_status_broken')  # 中断数量
+    status_skipped = d.get('launch_status_skipped')  # 跳过数量
+    status_unknown = d.get('launch_status_unknown')  # 未知错误数量
+    status_retries = d.get('launch_status_retries')  # 重试次数
     print('通过数量：{}'.format(status_passed))
     status_failed = d.get('launch_status_failed')  # 不通过数量
     print('失败数量：{}'.format(status_failed))
@@ -70,14 +74,14 @@ def DingTalkSend():
 
 if __name__ == '__main__':
     DingTalkSend()
- # "text": {
-           #     "content": name + " 自动化测试用例执行完成"
-           #                       "\n测试结果:" + result +
-           #                "\n运行总数:" + retries_run +
-           #                "\n通过数量:" + status_passed +
-           #                "\n失败数量:" + status_failed +
-           #                "\n控制台输出：\n" + job_url +
-           #                "\n测试报告：\n" + report_url,
-           #     "mentioned_list": ["niurunpeng"],
-           #     # "mentioned_mobile_list": ["17831017792"]
-           # }
+# "text": {
+#     "content": name + " 自动化测试用例执行完成"
+#                       "\n测试结果:" + result +
+#                "\n运行总数:" + retries_run +
+#                "\n通过数量:" + status_passed +
+#                "\n失败数量:" + status_failed +
+#                "\n控制台输出：\n" + job_url +
+#                "\n测试报告：\n" + report_url,
+#     "mentioned_list": ["niurunpeng"],
+#     # "mentioned_mobile_list": ["17831017792"]
+# }
